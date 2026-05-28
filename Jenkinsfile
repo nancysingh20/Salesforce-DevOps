@@ -22,44 +22,8 @@ pipeline {
                 sh 'sf --version'
             }
         }
-
-        stage('Display Org List') {
-
-            steps {
-
-                sh 'sf org list'
-            }
-        }
-
-        stage('Deploy to Sandbox') {
-
-            steps {
-
-                sh '''
-                sf project deploy start \
-                --source-dir force-app \
-                --target-org SandboxOrg \
-                --test-level NoTestRun
-                '''
-            }
-        }
-    }
-
-    post {
-
-        success {
-
-            echo 'Deployment Successful!'
-        }
-
-        failure {
-
-            echo 'Deployment Failed!'
-        }
-
-        always {
-
-            cleanWs()
-        }
+        
     }
 }
+
+         
